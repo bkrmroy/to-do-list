@@ -17,6 +17,7 @@ const handleProjectForm = (()=>{
             projectForm.reportValidity()
         }
         if(projectForm.checkValidity()){
+            handleProjects.addProject()
             projectFormContainer.classList.remove('active')
             projectFormOverlay.classList.remove('active')
         }

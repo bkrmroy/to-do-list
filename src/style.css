@@ -25,7 +25,7 @@ body{
     padding: 16px;
     background-color: rgb(231, 223, 211);
 }
-.sidebar-btns{
+.project-btns{
     font-size: 1.5rem;
     margin-top: 16px;
     display: flex;
@@ -33,11 +33,11 @@ body{
     gap: 8px;
     cursor: pointer;
 }
-.sidebar-btn{
+.project-btn{
     display: flex;
     justify-content: space-between;
 }
-.sidebar-btn-title:hover,.sidebar-btn-close:hover, button:hover, .btn-new-project:hover{
+.project-btn-title:hover,.project-btn-close:hover, button:hover, .btn-new-project:hover{
     scale: 0.97;
 }
 .content{
