@@ -1,0 +1,56 @@
+html{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+}
+.logo{
+    font-size: 2.5rem;
+}
+.main{
+    background-color: antiquewhite;
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+}
+.sidebar{
+    padding: 16px;
+    background-color: rgb(231, 223, 211);
+}
+.sidebar-btns{
+    font-size: 1.5rem;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer;
+}
+.sidebar-btn{
+    display: flex;
+    justify-content: space-between;
+}
+.sidebar-btn-title:hover,.sidebar-btn-close:hover, button:hover, .btn-new-section:hover{
+    scale: 0.97;
+}
+.content{
+    padding: 20px 40px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-gap: 16px;
+}
+.content-title{
+    font-size: 1.5rem ;
+}
+.tasks{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
