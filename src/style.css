@@ -37,7 +37,7 @@ body{
     display: flex;
     justify-content: space-between;
 }
-.sidebar-btn-title:hover,.sidebar-btn-close:hover, button:hover, .btn-new-section:hover{
+.sidebar-btn-title:hover,.sidebar-btn-close:hover, button:hover, .btn-new-project:hover{
     scale: 0.97;
 }
 .content{
@@ -53,4 +53,57 @@ body{
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+.project-form-container{
+    border-radius: 16px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    padding: 16px;
+    z-index: 10;
+    background-color: white;
+    width: fit-content;
+    height: auto;
+}
+.project-form-container.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+.project-form{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.project-form input{
+    border-radius: 8px;
+    padding: 8px;
+    border: 1px solid black;
+    outline: none;
+}
+button{
+    all: unset;
+    background-color: #3b82f6;
+    color: white;
+    padding: 8px 16px 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    height: fit-content;
+    text-align: center;
+}
+.project-form-overlay{
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+.project-form-overlay.active{
+    opacity: 1;
+    pointer-events: all;
 }
