@@ -5,7 +5,8 @@ module.exports = {
     mode: 'development',
     entry: {
         index: './src/index.js',
-        projectsHandler: './src/projects-handler.js'
+        projectsHandler: './src/projects-handler.js',
+        tasksHandler: './src/tasks-handler.js'
     },
     output: {
         filename: '[name].bundle.js',

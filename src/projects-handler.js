@@ -1,5 +1,5 @@
 const handleProjects = (() => {
-    const projectsLibrary = {hey:'bye'}
+    const projectsLibrary = {}
 
     const addProject = ()=>{
         const newProject = document.createElement('div')
@@ -25,10 +25,13 @@ const handleProjects = (() => {
         projectsLibrary[projectName] = []
         console.log(projectsLibrary)
     }
+    const getProjectArray = (project)=>{
+        return projectsLibrary[project]
+    }
     const removeProject = ()=>{
         
     }
-    return{addProject, removeProject}
+    return{addProject, removeProject, getProjectArray}
 })()
 
 export {handleProjects};

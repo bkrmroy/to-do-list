@@ -1,15 +1,16 @@
 import './style.css'
 import {handleProjects} from './projects-handler.js'
+import {handleTasks} from './tasks-handler'
 const btnAddProject = document.querySelector('.btn-new-project')
 const projectFormContainer = document.querySelector('.project-form-container')
 const projectForm = document.querySelector('.project-form')
 const projectFormSubmit = document.querySelector('.btn-project-form-submit')
 const projectFormOverlay = document.querySelector('.project-form-overlay')
-
+const projectSection = document.querySelector('.project-section')
+const content =document.querySelector('.content')
 const handleProjectForm = (()=>{
     btnAddProject.addEventListener('click',()=>{
-        projectFormContainer.classList.add('active')
-        projectFormOverlay.classList.add('active')
+        openProjectForm()
     })
     projectFormSubmit.addEventListener('click',(event)=>{
         event.preventDefault()
@@ -18,13 +19,39 @@ const handleProjectForm = (()=>{
         }
         if(projectForm.checkValidity()){
             handleProjects.addProject()
-            projectFormContainer.classList.remove('active')
-            projectFormOverlay.classList.remove('active')
+            closeProjectForm()
         }
     })
     projectFormOverlay.addEventListener('click',()=>{
-        projectFormContainer.classList.remove('active')
-        projectFormOverlay.classList.remove('active')
+        closeProjectForm()
     })
 })()
 
+const openProjectForm = ()=>{
+    projectFormContainer.classList.add('active')
+    projectFormOverlay.classList.add('active')
+}
+const closeProjectForm = ()=>{
+    projectFormContainer.classList.remove('active')
+    projectFormOverlay.classList.remove('active')
+    projectForm.reset()
+}
+projectSection.addEventListener('click',(clickedElement)=>{
+    if(clickedElement.target.classList.contains('project-btn-title')){
+        handleTasks.show(clickedElement.target.textContent)
+        // removeClass()
+        // content.classList.add(clickedElement.target.textContent)        
+    }
+})
+function removeClass(){
+    content.classList.forEach( itemOfClassList=>{
+        if(itemOfClassList === 'content'){
+            return
+        }
+        content.classList.remove(itemOfClassList)
+    })
+}
+
+//when user clicks taqke th name of the clicked item and pas s in as a parameter
+//take that parameter and bring out the array from the projectLibray function
+// loop the array and show every item
