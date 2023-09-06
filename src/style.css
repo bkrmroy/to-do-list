@@ -54,7 +54,7 @@ body{
     flex-direction: column;
     gap: 8px;
 }
-.project-form-container{
+.project-form-container, .task-form-container{
     border-radius: 16px;
     position: fixed;
     top: 50%;
@@ -67,10 +67,10 @@ body{
     width: fit-content;
     height: auto;
 }
-.project-form-container.active{
+.project-form-container.active, .task-form-container.active{
     transform: translate(-50%, -50%) scale(1);
 }
-.project-form{
+.project-form, .task-form{
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -92,7 +92,7 @@ button{
     height: fit-content;
     text-align: center;
 }
-.project-form-overlay{
+.project-form-overlay, .task-form-overlay{
     position: fixed;
     opacity: 0;
     transition: 200ms ease-in-out;
@@ -103,7 +103,7 @@ button{
     background-color: rgba(0, 0, 0, .5);
     pointer-events: none;
 }
-.project-form-overlay.active{
+.project-form-overlay.active, .task-form-overlay.active{
     opacity: 1;
     pointer-events: all;
 }
