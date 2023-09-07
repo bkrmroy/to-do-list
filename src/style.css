@@ -35,7 +35,10 @@ body{
 }
 .project-btn{
     display: flex;
+    border-radius: 8px;
+    padding: 8px;
     justify-content: space-between;
+    background-color: burlywood;
 }
 .project-btn-title:hover,.project-btn-close:hover, button:hover, .btn-new-project:hover{
     scale: 0.97;
@@ -106,4 +109,18 @@ button{
 .project-form-overlay.active, .task-form-overlay.active{
     opacity: 1;
     pointer-events: all;
+}
+.task{
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+}
+.task-date{
+    margin-left: auto;
+}
+.project-btn{
+
 }

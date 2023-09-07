@@ -57,6 +57,8 @@ function removeClass(){
         content.classList.remove(itemOfClassList)
     })
 }
+
+//all about tasks
 const openTaskForm = ()=>{
     taskFormContainer.classList.add('active')
     taskFormOverlay.classList.add('active')
@@ -75,6 +77,7 @@ const handleTaskForm = (()=>{
     })
     taskFormSubmit.addEventListener('click',(event)=>{
         event.preventDefault()
+        handleTasks.add()
         if(!taskForm.checkValidity()){
             taskForm.reportValidity()
         }

@@ -25,13 +25,17 @@ const handleProjects = (() => {
         projectsLibrary[projectName] = []
         console.log(projectsLibrary)
     }
+    const addTaskToProject = (project ,task)=>{
+        const taskArray = projectsLibrary[project]
+       taskArray.push(task)
+    }
     const getProjectArray = (project)=>{
         return projectsLibrary[project]
     }
     const removeProject = ()=>{
         
     }
-    return{addProject, removeProject, getProjectArray}
+    return{addProject, removeProject, getProjectArray, addTaskToProject}
 })()
 
 export {handleProjects};
