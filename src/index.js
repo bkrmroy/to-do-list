@@ -7,12 +7,13 @@ const projectForm = document.querySelector('.project-form')
 const projectFormSubmit = document.querySelector('.btn-project-form-submit')
 const projectFormOverlay = document.querySelector('.project-form-overlay')
 const projectSection = document.querySelector('.project-section')
-const content =document.querySelector('.content')
 const btnAddTask = document.querySelector('.btn-new-task')
 const taskFormContainer = document.querySelector('.task-form-container')
 const taskFormOverlay = document.querySelector('.task-form-overlay')
 const taskForm =document.querySelector('.task-form')
 const taskFormSubmit = document.querySelector('.btn-task-form-submit')
+const tasks = document.querySelector('.tasks')
+
 
 const handleProjectForm = (()=>{
     btnAddProject.addEventListener('click',()=>{
@@ -44,19 +45,9 @@ const closeProjectForm = ()=>{
 }
 projectSection.addEventListener('click',(clickedElement)=>{
     if(clickedElement.target.classList.contains('project-btn-title')){
-        handleTasks.show(clickedElement.target.textContent)
-        // removeClass()
-        // content.classList.add(clickedElement.target.textContent)        
+        handleTasks.show(clickedElement.target.textContent)       
     }
 })
-function removeClass(){
-    content.classList.forEach( itemOfClassList=>{
-        if(itemOfClassList === 'content'){
-            return
-        }
-        content.classList.remove(itemOfClassList)
-    })
-}
 
 //all about tasks
 const openTaskForm = ()=>{
@@ -87,6 +78,11 @@ const handleTaskForm = (()=>{
         }
     })
 })()
-//when user clicks taqke th name of the clicked item and pas s in as a parameter
-//take that parameter and bring out the array from the projectLibray function
-// loop the array and show every item
+
+tasks.addEventListener('click',(_clickedElement)=>{
+    if(_clickedElement.target.classList.contains("task-close")){
+        const hey = _clickedElement.target.parentElement
+        tasks.removeChild(hey)
+        handleTasks.remove(hey.dataset.number)
+    }
+})

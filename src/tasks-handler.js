@@ -7,14 +7,14 @@ const handleTasks = (()=>{
         contentTitle.textContent = clickedProject
         const projectArray = handleProjects.getProjectArray(clickedProject)
         contentTasks.innerHTML = ''
-        loopThroughTheProject(projectArray)
+        createTaskElementsOf(projectArray)
     }
-    const loopThroughTheProject = (_projectArray)=>{
+    const createTaskElementsOf = (_projectArray)=>{
         _projectArray.forEach(item =>{
             const task = document.createElement('div')
             task.classList.add('task')
             task.dataset.number = _projectArray.indexOf(item)
-            
+
             const checkBox = document.createElement('div')
             checkBox.classList.add('task-check-box')
             checkBox.textContent = '0'
@@ -30,9 +30,9 @@ const handleTasks = (()=>{
             taskDate.textContent = item.date
             task.appendChild(taskDate)
 
-            const taskClose = document.createElement('div')
+            const taskClose = document.createElement('button')
             taskClose.classList.add('task-close')
-            taskClose.textContent = 'X'
+            taskClose.textContent = 'Delete'
             task.appendChild(taskClose)
 
             // task.textContent = item
@@ -51,7 +51,12 @@ const handleTasks = (()=>{
         }
 
     }
-    return{show, add}
+    const remove = (_taskIndex)=>{
+        const projectName = document.querySelector('.content-title').textContent
+        handleProjects.removeTaskFromProject(projectName, _taskIndex)
+        show(projectName)
+    }
+    return{show, add, remove}
 })()
 
 export{handleTasks}
