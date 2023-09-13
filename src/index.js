@@ -48,6 +48,14 @@ projectSection.addEventListener('click',(clickedElement)=>{
         handleTasks.show(clickedElement.target.textContent)       
     }
 })
+projectSection.addEventListener('click',(clickedElement)=>{
+    if(clickedElement.target.classList.contains('project-btn-close')){
+        const parent = clickedElement.target.parentElement
+        const titleChild = parent.firstChild
+        projectSection.removeChild(parent)
+        handleProjects.removeProject(titleChild.textContent) 
+    }
+})
 
 //all about tasks
 const openTaskForm = ()=>{
@@ -73,7 +81,6 @@ const handleTaskForm = (()=>{
             taskForm.reportValidity()
         }
         if(taskForm.checkValidity()){
-            ////////////////////
             closeTaskForm()
         }
     })

@@ -15,7 +15,7 @@ const handleProjects = (() => {
 
         const closeButton = document.createElement('div')
         closeButton.classList.add('project-btn-close')
-        closeButton.textContent = 'x'
+        closeButton.textContent = 'X'
 
         newProject.appendChild(projectText)
         newProject.appendChild(closeButton)
@@ -37,8 +37,8 @@ const handleProjects = (() => {
     const getProjectArray = (project)=>{
         return projectsLibrary[project]
     }
-    const removeProject = ()=>{
-        
+    const removeProject = (_projectName)=>{
+        delete projectsLibrary[_projectName]
     }
     return{addProject, removeProject, getProjectArray, addTaskToProject, removeTaskFromProject}
 })()
