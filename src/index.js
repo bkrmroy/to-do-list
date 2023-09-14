@@ -13,7 +13,7 @@ const taskFormOverlay = document.querySelector('.task-form-overlay')
 const taskForm =document.querySelector('.task-form')
 const taskFormSubmit = document.querySelector('.btn-task-form-submit')
 const tasks = document.querySelector('.tasks')
-
+const taskDetailsOverlay = document.querySelector('.task-details-overlay')
 
 const handleProjectForm = (()=>{
     btnAddProject.addEventListener('click',()=>{
@@ -92,4 +92,21 @@ tasks.addEventListener('click',(_clickedElement)=>{
         tasks.removeChild(hey)
         handleTasks.remove(hey.dataset.number)
     }
+})
+tasks.addEventListener('click',(_clickedElement)=>{
+    if(_clickedElement.target.classList.contains("see-details")){
+        const task = _clickedElement.target.parentElement
+        handleProjects.showTaskDetails(document.querySelector('.content-title').textContent ,task.dataset.number)
+    }
+})
+tasks.addEventListener('click',(_clickedElement)=>{
+    if(_clickedElement.target.classList.contains("task-check-box")){
+        const task = _clickedElement.target.parentElement
+        task.classList.add('checked')
+        handleProjects.checkProject(document.querySelector('.content-title').textContent, task.dataset.number)
+    }
+})
+taskDetailsOverlay.addEventListener('click',()=>{
+    taskDetailsOverlay.classList.remove('active')
+    document.querySelector('.task-details').classList.remove('active')
 })

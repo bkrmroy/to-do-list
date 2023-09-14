@@ -1,5 +1,10 @@
 html{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --content-color:  #ebe7ff;
+    --sidebar-color: #e7e2ff;
+    --header-color: #ddd6fe;
+    --btn-color: #a78bfa
 }
 body{
     display: grid;
@@ -8,22 +13,26 @@ body{
     margin: 0;
     padding: 0;
 }
+.logo{
+    font-weight: bold;
+}
 .header{
     display: flex;
     justify-content: center;
     padding: 16px;
+    background-color: var(--header-color);
 }
 .logo{
     font-size: 2.5rem;
 }
 .main{
-    background-color: antiquewhite;
+    background-color: var(--content-color);
     display: grid;
     grid-template-columns: 0.2fr 1fr;
 }
 .sidebar{
     padding: 16px;
-    background-color: rgb(231, 223, 211);
+    background-color: var(--sidebar-color);
 }
 .project-btns{
     font-size: 1.5rem;
@@ -37,8 +46,10 @@ body{
     display: flex;
     border-radius: 8px;
     padding: 8px;
+    align-items: center;
+    gap: 8px;
     justify-content: space-between;
-    background-color: burlywood;
+    background-color: var(--sidebar-color);
 }
 .project-btn-title:hover,.project-btn-close:hover, button:hover, .btn-new-project:hover{
     scale: 0.97;
@@ -55,9 +66,9 @@ body{
 .tasks{
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
 }
-.project-form-container, .task-form-container{
+.project-form-container, .task-form-container, .task-details{
     border-radius: 16px;
     position: fixed;
     top: 50%;
@@ -70,6 +81,21 @@ body{
     width: fit-content;
     height: auto;
 }
+.task-details.active{
+    display: flex;
+    background-color: var(--content-color);
+    flex-direction: column;
+    gap: 8px;
+    width: 400px;
+    transform: translate(-50%, -50%) scale(1);
+}
+.task-details-header{
+    font-size: 1.5rem;
+
+}
+.task-form-container{
+    width: clamp(250px, 300px, 40%);
+}
 .project-form-container.active, .task-form-container.active{
     transform: translate(-50%, -50%) scale(1);
 }
@@ -78,15 +104,20 @@ body{
     flex-direction: column;
     gap: 8px;
 }
-.project-form input{
+.task-form > div{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+input{
     border-radius: 8px;
     padding: 8px;
-    border: 1px solid black;
+    border: 1px solid var(--btn-color);
     outline: none;
 }
 button{
     all: unset;
-    background-color: #3b82f6;
+    background-color: var(--btn-color);
     color: white;
     padding: 8px 16px 8px 16px;
     border-radius: 8px;
@@ -95,7 +126,7 @@ button{
     height: fit-content;
     text-align: center;
 }
-.project-form-overlay, .task-form-overlay{
+.project-form-overlay, .task-form-overlay, .task-details-overlay{
     position: fixed;
     opacity: 0;
     transition: 200ms ease-in-out;
@@ -106,12 +137,12 @@ button{
     background-color: rgba(0, 0, 0, .5);
     pointer-events: none;
 }
-.project-form-overlay.active, .task-form-overlay.active{
+.project-form-overlay.active, .task-form-overlay.active, .task-details-overlay.active{
     opacity: 1;
     pointer-events: all;
 }
 .task{
-    border: 2px solid black;
+    background-color: var(--sidebar-color);
     border-radius: 8px;
     padding: 8px;
     display: flex;
@@ -119,8 +150,24 @@ button{
     gap: 16px;
     align-items: center;
 }
+.task:hover{
+    scale: 1.005;
+    -webkit-box-shadow: 2px 5px 6px 0px rgba(0,0,0,0.37); 
+    box-shadow: 2px 5px 6px 0px rgba(0,0,0,0.37);
+}
+.task-close, .task-check-box, .project-btn-close{
+    height: 24px;
+    width: auto;
+    cursor: pointer;
+}
+.task.checked{
+    text-decoration: line-through;
+    color: gray;
+}
 .task-date{
     margin-left: auto;
+}
+#task-description{
 }
 .project-btn{
 

@@ -1,4 +1,6 @@
 import { handleProjects } from "./projects-handler"
+import iconDel from './images/trash-can-outline.png'
+import iconCheck from './images/checkbox-outline.png'
 const contentTitle = document.querySelector('.content-title')
 const contentTasks = document.querySelector('.tasks')
 const handleTasks = (()=>{
@@ -15,9 +17,12 @@ const handleTasks = (()=>{
             task.classList.add('task')
             task.dataset.number = _projectArray.indexOf(item)
 
-            const checkBox = document.createElement('div')
+            if(item.checked === 'yes'){
+                task.classList.add('checked')
+            }
+            const checkBox = document.createElement('img')
             checkBox.classList.add('task-check-box')
-            checkBox.textContent = '0'
+            checkBox.src = iconCheck
             task.appendChild(checkBox)
 
             const taskTitle = document.createElement('div')
@@ -29,8 +34,14 @@ const handleTasks = (()=>{
             taskDate.classList.add('task-date')
             taskDate.textContent = item.date
             task.appendChild(taskDate)
+            
+            const details = document.createElement('button')
+            details.classList.add('see-details')
+            details.textContent = 'Details'
+            task.appendChild(details)
 
-            const taskClose = document.createElement('button')
+            const taskClose = document.createElement('img')
+            taskClose.src = iconDel
             taskClose.classList.add('task-close')
             taskClose.textContent = 'Delete'
             task.appendChild(taskClose)
@@ -43,7 +54,9 @@ const handleTasks = (()=>{
         if(document.querySelector('.task-form').checkValidity()){
             const taskObject = {
                 title: document.getElementById('task-title').value,
-                date: document.getElementById('task-date').value
+                description: document.getElementById('task-description').value,
+                date: document.getElementById('task-date').value,
+                checked: 'no'
             }
             const projectName = document.querySelector('.content-title').textContent
             handleProjects.addTaskToProject(projectName, taskObject)

@@ -1,3 +1,4 @@
+import iconClose from './images/close.png'
 const handleProjects = (() => {
     const projectsLibrary = {}
 
@@ -13,9 +14,9 @@ const handleProjects = (() => {
         projectTitle.textContent = document.getElementById('new-project-title').value
         projectText.appendChild(projectTitle)
 
-        const closeButton = document.createElement('div')
+        const closeButton = document.createElement('img')
         closeButton.classList.add('project-btn-close')
-        closeButton.textContent = 'X'
+        closeButton.src = iconClose
 
         newProject.appendChild(projectText)
         newProject.appendChild(closeButton)
@@ -40,7 +41,22 @@ const handleProjects = (() => {
     const removeProject = (_projectName)=>{
         delete projectsLibrary[_projectName]
     }
-    return{addProject, removeProject, getProjectArray, addTaskToProject, removeTaskFromProject}
+    const checkProject = (_projectName, _taskNumber)=>{
+        const project = projectsLibrary[_projectName]
+        const task = project[_taskNumber]
+        task.checked = 'yes'
+    }
+    const showTaskDetails = (_projectName, _taskNumber)=>{
+        const project = projectsLibrary[_projectName]
+        const task = project[_taskNumber]
+        document.querySelector('.task-details').classList.add('active')
+        document.querySelector('.task-details-overlay').classList.add('active')
+        document.querySelector('.task-details-title').textContent = `Title: ${task.title}`
+        document.querySelector('.task-details-description').textContent = `Description: ${task.description}`
+        document.querySelector('.task-details-date').textContent = `Date: ${task.date}`
+
+    }
+    return{addProject, removeProject, getProjectArray, addTaskToProject, removeTaskFromProject, checkProject, showTaskDetails}
 })()
 
 export {handleProjects};
