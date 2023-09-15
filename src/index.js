@@ -15,6 +15,11 @@ const taskFormSubmit = document.querySelector('.btn-task-form-submit')
 const tasks = document.querySelector('.tasks')
 const taskDetailsOverlay = document.querySelector('.task-details-overlay')
 
+import plusIcon from './images/plus.png';
+
+const plusImg = document.querySelector('.plus-icon')
+plusImg.src = plusIcon
+
 const handleProjectForm = (()=>{
     btnAddProject.addEventListener('click',()=>{
         openProjectForm()
@@ -45,6 +50,7 @@ const closeProjectForm = ()=>{
 }
 projectSection.addEventListener('click',(clickedElement)=>{
     if(clickedElement.target.classList.contains('project-btn-title')){
+        document.querySelector('.btn-new-task').classList.add('active')
         handleTasks.show(clickedElement.target.textContent)       
     }
 })

@@ -1,6 +1,7 @@
 import { handleProjects } from "./projects-handler"
 import iconDel from './images/trash-can-outline.png'
 import iconCheck from './images/checkbox-outline.png'
+import { compareAsc, format, parseISO } from 'date-fns'
 const contentTitle = document.querySelector('.content-title')
 const contentTasks = document.querySelector('.tasks')
 const handleTasks = (()=>{
@@ -45,8 +46,6 @@ const handleTasks = (()=>{
             taskClose.classList.add('task-close')
             taskClose.textContent = 'Delete'
             task.appendChild(taskClose)
-
-            // task.textContent = item
             contentTasks.appendChild(task)
         })
     }
@@ -55,7 +54,7 @@ const handleTasks = (()=>{
             const taskObject = {
                 title: document.getElementById('task-title').value,
                 description: document.getElementById('task-description').value,
-                date: document.getElementById('task-date').value,
+                date: format(parseISO(document.getElementById('task-date').value) , 'dd MMM, yyyy'),
                 checked: 'no'
             }
             const projectName = document.querySelector('.content-title').textContent
