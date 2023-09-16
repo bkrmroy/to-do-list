@@ -17,6 +17,11 @@ const taskDetailsOverlay = document.querySelector('.task-details-overlay')
 
 import plusIcon from './images/plus.png';
 
+const doAtFirst =(()=>{
+    handleProjects.manageLocalStorage()
+})()
+
+
 const plusImg = document.querySelector('.plus-icon')
 plusImg.src = plusIcon
 
@@ -48,6 +53,7 @@ const closeProjectForm = ()=>{
     projectFormOverlay.classList.remove('active')
     projectForm.reset()
 }
+
 projectSection.addEventListener('click',(clickedElement)=>{
     if(clickedElement.target.classList.contains('project-btn-title')){
         document.querySelector('.btn-new-task').classList.add('active')
@@ -91,7 +97,7 @@ const handleTaskForm = (()=>{
         }
     })
 })()
-
+//remove a task
 tasks.addEventListener('click',(_clickedElement)=>{
     if(_clickedElement.target.classList.contains("task-close")){
         const hey = _clickedElement.target.parentElement
@@ -99,19 +105,22 @@ tasks.addEventListener('click',(_clickedElement)=>{
         handleTasks.remove(hey.dataset.number)
     }
 })
+//see details of a task
 tasks.addEventListener('click',(_clickedElement)=>{
     if(_clickedElement.target.classList.contains("see-details")){
         const task = _clickedElement.target.parentElement
         handleProjects.showTaskDetails(document.querySelector('.content-title').textContent ,task.dataset.number)
     }
 })
+//check a task
 tasks.addEventListener('click',(_clickedElement)=>{
     if(_clickedElement.target.classList.contains("task-check-box")){
         const task = _clickedElement.target.parentElement
         task.classList.add('checked')
-        handleProjects.checkProject(document.querySelector('.content-title').textContent, task.dataset.number)
+        handleProjects.checkTask(document.querySelector('.content-title').textContent, task.dataset.number)
     }
 })
+//close task details
 taskDetailsOverlay.addEventListener('click',()=>{
     taskDetailsOverlay.classList.remove('active')
     document.querySelector('.task-details').classList.remove('active')
