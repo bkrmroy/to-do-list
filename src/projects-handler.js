@@ -25,7 +25,6 @@ const handleProjects = (() => {
 
         const projectName = document.getElementById('new-project-title').value
         projectsLibrary[projectName] = []
-        // console.log(projectsLibrary)
         saveToLocalStorage()
     }
     const addTaskToProject = (project ,task)=>{
@@ -61,7 +60,7 @@ const handleProjects = (() => {
     }
     const saveToLocalStorage = ()=>{
         localStorage.setItem('theObject', JSON.stringify(projectsLibrary))
-        // console.log('local storage updated')
+
     }
     const addProjectToDOM = (_projectTitle)=>{
         const newProject = document.createElement('div')
@@ -95,8 +94,7 @@ const handleProjects = (() => {
             Object.keys(projectsLibrary).forEach(key=>{
                 addProjectToDOM(key)
             })
-            // console.log('this is projectsLibrary ')
-            // console.log(projectsLibrary)
+
         }
     }
 
